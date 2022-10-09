@@ -2,7 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "sourceMap": true,
-    "lib": ["ES2020", "DOM"],
+    "lib": ["es6", "DOM"],
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "Node",
@@ -10,6 +10,9 @@
     "strict": false,
     "resolveJsonModule": true,
     "baseUrl": ".",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "paths": {
       "@hooks/*": ["hooks/*"],
       "@components/*": ["components/*"],
