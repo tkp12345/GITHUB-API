@@ -25,17 +25,19 @@ const darkTheme = createTheme({
 });
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  width:'100%',
   color: '#000',
 }));
 
-const Navbar = () => {
+const Navbar = ({setInputValue}:any) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar position="sticky" >
         <StyledToolbar>
           <GitHubIcon  sx={{display:{xs: "none", sm:"block", fontSize: 30}}}/>
           <Search>
-            <StyledInputBase  placeholder="Search Repositories..."/>
+            <StyledInputBase onChange={(e)=>setInputValue(e.target.value)}
+                             placeholder="Search Repositories..."/>
           </Search>
         </StyledToolbar>
       </AppBar>

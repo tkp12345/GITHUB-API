@@ -1,12 +1,13 @@
-import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import {Box} from "@mui/material";
+import React, { useState } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Box } from '@mui/material';
 import Navbar from './src/components/layout/Navbar';
 import TabBar from './src/components/layout/TabBar';
 
-
-
 const App = () => {
+
+  const [inputValue, setInputValue] = useState('')
+
   return (
     <div>
       <BrowserRouter>
@@ -14,12 +15,8 @@ const App = () => {
           path="/"
           render={(history)=>(
             <Box>
-              <Navbar/>
-              <TabBar history={history}/>
-              {/*<Stack direction="row" spacing={2} justifyContent="space-between">*/}
-              {/*    <Sidebar/>*/}
-              {/*    <Contents/>*/}
-              {/*</Stack>*/}
+              <Navbar setInputValue={setInputValue}/>
+              <TabBar inputValue={inputValue} history={history}/>
             </Box>
           )}
         />

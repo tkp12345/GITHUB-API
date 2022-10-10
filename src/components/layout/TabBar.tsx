@@ -3,10 +3,11 @@ import { Tab, Tabs } from '@mui/material';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import StarsIcon from '@mui/icons-material/Stars';
 import styled from '@emotion/styled';
-import Repository from '../Repository';
-import Favorite from '../Favorite';
+import Repository from '../repository/Repository';
+import Favorite from '../favorite/Favorite';
 
-const TabBar = (history:any) => {
+const TabBar = ({inputValue}:any) => {
+  console.log('🔁TabBar')
   const [selectedTab, setSelectedTab] = useState(0);
   const handleChange = (event:any, newValue:any) => {
     setSelectedTab(newValue);
@@ -35,7 +36,7 @@ const TabBar = (history:any) => {
         <Tab icon={<BookOutlinedIcon/>} iconPosition="start" label="Repository" />
         <Tab icon={<StarsIcon/>} iconPosition="start" label="Favorites"  />
       </AntTabs>
-      {selectedTab === 0 && <Repository/>}
+      {selectedTab === 0 && <Repository inputValue={inputValue}/>}
       {selectedTab === 1 && <Favorite/>}
     </>
   );
