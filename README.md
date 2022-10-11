@@ -88,7 +88,7 @@ Repository 마다 등록된 issue 정보를 효율적으로 요청하기위해 P
 
     
 
-#### 5. react-hot-loader 
+#### 5. react-refresh (과거: react-hot-loader) 
     단일 개발을 할때는 크게 상관없지만, 실제 협업 상황이라고 가정하고 코드편경시 바뀐부분만 새로 변경하기 위해 적용했습니다 
 
 #### 6. react 환경설정 (cra (x)) 직접 : webpack,ts,loader,eslint,prettier 설정을 직접하였습니다
