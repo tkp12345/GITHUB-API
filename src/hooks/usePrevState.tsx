@@ -1,11 +1,9 @@
-import { useEffect,useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-function usePrevState(state:any) {
-  const ref = useRef();
+export function usePrevState<T>(state:T) {
+  const ref = useRef(state);
   useEffect(() => {
     ref.current = state;
-  });
+  }, [state]);
   return ref.current;
 }
-
-export default usePrevState;

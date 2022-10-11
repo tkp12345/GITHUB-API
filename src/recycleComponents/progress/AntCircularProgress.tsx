@@ -1,8 +1,13 @@
-import { Box, CircularProgress, circularProgressClasses, CircularProgressProps } from '@mui/material';
-import React from "react";
+import {
+  Box,
+  CircularProgress,
+  circularProgressClasses,
+  CircularProgressProps,
+} from '@mui/material';
+import React from 'react';
 
-export function FacebookCircularProgress(props: CircularProgressProps) {
-  const size = 100;
+export function AntCircularProgress(props: CircularProgressProps) {
+  const size = 130;
   return (
     <Box sx={{ position: 'relative' }}>
       <CircularProgress
@@ -14,13 +19,14 @@ export function FacebookCircularProgress(props: CircularProgressProps) {
         size={size}
         thickness={4}
         {...props}
-        value={100}
+        value={130}
       />
       <CircularProgress
         variant="indeterminate"
         disableShrink
         sx={{
-          color: (theme) => (theme.palette.mode === 'light' ? '#000' : '#308fe8'),
+          color: (theme) =>
+            theme.palette.mode === 'light' ? '#000' : '#308fe8',
           animationDuration: '550ms',
           position: 'absolute',
           left: 0,

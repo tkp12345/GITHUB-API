@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
-import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import AdjustOutlinedIcon from '@mui/icons-material/AdjustOutlined';
-
+import RegularList from '../../recycleComponents/list/RegularList';
+import RepositoryListItem from '../../recycleComponents/list/RepositoryListItem';
+import _LocalStorage from '../../utills/LocalStorage';
+import { FAVORITE_TYPE, ISSUE_TYPE } from '../../utills/type';
+import { AUTH_FIRST, AUTH_SECOND, AUTH_THIRD } from '../../constants/auth';
+import Pagination from '../pagination/pagination';
+import IssueListItem from '../../recycleComponents/list/IssueListItem';
+import StarsIcon from '@mui/icons-material/Stars';
+import { errorHandler } from '../../utills/error';
+import FavoriteTab from './Tab/FavoriteTab';
+import IssueTab from './Tab/IssueTab';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -29,32 +38,46 @@ function TabPanel(props: TabPanelProps) {
     </div>
   );
 }
-
+/******************************************************************************************
+ * 즐겨찾기 페이지 컴포넌트
+ *
+ *
+ *****************************************************************************************/
 const Favorite = () => {
-  console.log('Favorite')
   const [selectedTab, setSelectedTab] = useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setSelectedTab(selectedTab);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
   };
+
   return (
     <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
+      sx={{
+        flexGrow: 1,
+        bgcolor: 'background.paper',
+        display: 'flex',
+        height: 224,
+      }}
     >
-      <Tabs orientation="vertical"  value={selectedTab}   variant="fullWidth" onChange={handleChange}>
-        <Tab icon={<BookOutlinedIcon/>} iconPosition="start" label="Repository" />
-        <Tab icon={<AdjustOutlinedIcon/>} iconPosition="start" label="Issue"  />
+      <Tabs
+        orientation="vertical"
+        sx={{
+          color: 'yellow',
+        }}
+        value={selectedTab}
+        variant="fullWidth"
+        onChange={handleChange}
+      >
+        <Tab icon={<StarsIcon />} iconPosition="start" label="FAVORITES" />
+        <Tab icon={<AdjustOutlinedIcon />} iconPosition="start" label="Issue" />
       </Tabs>
       <TabPanel value={selectedTab} index={0}>
-        Item One
+        <FavoriteTab/>
       </TabPanel>
       <TabPanel value={selectedTab} index={1}>
-        Item Two
+        <IssueTab/>
       </TabPanel>
     </Box>
-    // {/*//     <Stack direction="row" spacing={2} justifyContent="space-between">*/}
-    // {/*//     <Sidebar/>*/}
-    // {/*//     <Contents/>*/}
-    // {/*// </Stack>*/}
   );
 };
 

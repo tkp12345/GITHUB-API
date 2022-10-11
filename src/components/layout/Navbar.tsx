@@ -1,43 +1,21 @@
-import React from 'react';
-import {AppBar, Toolbar, styled, Box, InputBase, createTheme,ThemeProvider} from "@mui/material";
+import React, { SetStateAction } from 'react';
+import { AppBar, Toolbar, styled, Box, InputBase, createTheme, ThemeProvider } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
-
-const StyledToolbar = styled(Toolbar)({
-  display:"flex",
-  justifyContent:"center"
-})
-
-const Search = styled("div")(({theme})=>({
-  backgroundColor:"white",
-  padding:"0 10px",
-  borderRadius:theme.shape.borderRadius,
-  width:"40%",
-  margin:"0 20px"
-}))
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#1976d2',
-    },
-  },
-});
+import { darkTheme, Search, StyledToolbar } from '../style/RecycleStyle';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  width:'100%',
+  width: '100%',
   color: '#000',
 }));
 
-const Navbar = ({setInputValue}:any) => {
+const Navbar = ({ setInputValue }: SetStateAction<any>) => {
   return (
     <ThemeProvider theme={darkTheme}>
-      <AppBar position="sticky" >
+      <AppBar position="sticky">
         <StyledToolbar>
-          <GitHubIcon  sx={{display:{xs: "none", sm:"block", fontSize: 30}}}/>
+          <GitHubIcon sx={{ display: { xs: 'none', sm: 'block', fontSize: 30 } }} />
           <Search>
-            <StyledInputBase onChange={(e)=>setInputValue(e.target.value)}
-                             placeholder="Search Repositories..."/>
+            <StyledInputBase onChange={(e) => setInputValue(e.target.value)} placeholder="Search Repositories..." />
           </Search>
         </StyledToolbar>
       </AppBar>
