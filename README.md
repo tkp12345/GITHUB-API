@@ -2,6 +2,8 @@
 ```
     $ npm i 
     $ npm run dev 
+    
+    접속 : http://localhost:3090 
 ```
 <br/>
 
