@@ -91,17 +91,17 @@ Repository 마다 등록된 issue 정보를 효율적으로 요청하기위해 P
 ```
 
 #### 3. 자주바뀌지 않는데이터/렌더링 하지않을데이터  useRef()로 관리하기 
-    사용자에게 검색한 Repository의 총데이터를 알려주고 싶었습니다. 처음API 요청시 Repository 총데이터를알수 있었습니다.
+ 사용자에게 검색한 Repository의 총데이터를 알려주고 싶었습니다. 처음API 요청시 Repository 총데이터를알수 있었습니다.
 따라서 API 요청시마다 Repository의 총데이터 값의 상태를 변경시킬 필요가 없었고 이에따라 렌더링이 일어나지 않기 하기위해 useRef()를
 사용했습니다 
 
 #### 4. promise.all / promise.allsettled
-    Repository 정보에따른 각각의 issue 들을 효과적으로 호출하기 위해 Promise.all 을 사용해 병렬 처리 하였습니다.
+ Repository 정보에따른 각각의 issue 들을 효과적으로 호출하기 위해 Promise.all 을 사용해 병렬 처리 하였습니다.
 
     
 
 #### 5. react-refresh (과거: react-hot-loader) 
-    단일 개발을 할때는 크게 상관없지만, 실제 협업 상황이라고 가정하고 코드편경시 바뀐부분만 새로 변경하기 위해 적용했습니다 
+ 단일 개발을 할때는 크게 상관없지만, 실제 협업 상황이라고 가정하고 코드편경시 바뀐부분만 새로 변경하기 위해 적용했습니다 
 
 #### 6. react 환경설정 (cra (x)) 직접 : webpack,ts,loader,eslint,prettier 설정을 직접하였습니다
 
