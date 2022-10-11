@@ -24,7 +24,7 @@
     각 페이지마다 데이터의 총개수가 필요하다고 느꼈습니다. 또한 검색기능이 주된기능이기 떄문에
     자동완성 검색기능을 채택했습니다
 ```
-![ezgif com-gif-maker (10)](https://user-images.githubusercontent.com/46067837/195123209-36d817b5-a4d5-417f-b4c9-7fe80281dad4.gif)
+![ezgif com-gif-maker (11)](https://user-images.githubusercontent.com/46067837/195214900-918d5281-5861-4cc8-aa72-9ee862d40913.gif)
 <br/>
 
 # 4. 기능구현
@@ -49,19 +49,16 @@ input onChange 의 특정 기간마다 검사를 하여 API를 요청합니다
 
 
 #### 2.검색된 Public Repository를 등록할 수 있다.
-![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/46067837/195115652-2c983244-a87e-4604-9df8-78cc754d77e5.gif)
-
+![ezgif com-gif-maker (12)](https://user-images.githubusercontent.com/46067837/195215333-12296afd-5f68-4ba8-ad10-b828892514f1.gif)
     
 LocalStorage 를 다루는 작업이 많아보였습니다. LocalStorage 데이터 CRUD 를 위한 함수를
 따로 만들어 재사용이 가능하도록 했습니다. 즐겨찾기는 처음클릭시 등록되고 등록이 되있을시 재클릭하면 삭제됩니다.
 
 #### 3.등록된 Repository를 삭제할 수 있다.
-
  휴지통 아이콘을 누르게되면 등록된 Repository 정보가 삭제되게됩니다 
 
 #### 4. 등록된 각각의 Public Repository의 issue를 한 페이지에서 모아서 볼 수 있다.
-![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/46067837/195114430-a0ead4f8-e2f0-454c-92ed-9e80a7d9aded.gif)
-
+![ezgif com-gif-maker (13)](https://user-images.githubusercontent.com/46067837/195215477-3f89ac7e-2f5f-4a32-9add-092df5954419.gif)
 Repository 마다 등록된 issue 정보를 효율적으로 요청하기위해 Promise.all 을 사용하여 비동기 병렬 요청을 하였습니다.
 <br/>
 
@@ -77,6 +74,21 @@ Repository 마다 등록된 issue 정보를 효율적으로 요청하기위해 P
     git Repository API 는 성능이 좋지 못하였습니다 많은 페이지를 가져오면 속도가 느리기때문에 첫 화면에
 보여줄 데이터만 API 요청을하고, 사용자가 페이지 변경시 미리 다음번 데이터가 없는지 확인하고 미리 API요청을 하도록
 구현했습니다 
+```
+   src/components/pagination/pagination.tsx>
+   
+    if (props.data && !props.data[(currentPage + 2) * itemsPerPage]) {
+       ...
+        props?.getApi(
+          AUTH_FIRST + AUTH_SECOND + AUTH_THIRD,
+          Number(props.page + 1),
+          props.inputValue,
+        );
+    
+      props.setPage(Number(props.page + 1));
+    }
+  };
+```
 
 #### 3. 자주바뀌지 않는데이터/렌더링 하지않을데이터  useRef()로 관리하기 
     사용자에게 검색한 Repository의 총데이터를 알려주고 싶었습니다. 처음API 요청시 Repository 총데이터를알수 있었습니다.
