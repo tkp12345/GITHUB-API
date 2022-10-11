@@ -18,9 +18,9 @@ const LocalStorage = () => {
   };
 
   const addFavorite = (favoriteData: any) => {
-    const isAdded = getFavorite().find(
+    const isAdded = getFavorite()?getFavorite().find(
       (LocalFavorite: any) => LocalFavorite.id === favoriteData.id,
-    );
+    ):false;
     //로컬스토리지 선택 요소 포함여부확인
     if (getFavorite() && isAdded) {
       removeFavorite(favoriteData.id);

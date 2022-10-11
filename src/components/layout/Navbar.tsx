@@ -1,5 +1,13 @@
 import React, { SetStateAction } from 'react';
-import { AppBar, Toolbar, styled, Box, InputBase, createTheme, ThemeProvider } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  styled,
+  Box,
+  InputBase,
+  createTheme,
+  ThemeProvider,
+} from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { darkTheme, Search, StyledToolbar } from '../style/RecycleStyle';
 
@@ -13,9 +21,14 @@ const Navbar = ({ setInputValue }: SetStateAction<any>) => {
     <ThemeProvider theme={darkTheme}>
       <AppBar position="sticky">
         <StyledToolbar>
-          <GitHubIcon sx={{ display: { xs: 'none', sm: 'block', fontSize: 30 } }} />
+          <GitHubIcon
+            sx={{ display: { xs: 'none', sm: 'block', fontSize: 30 } }}
+          />
           <Search>
-            <StyledInputBase onChange={(e) => setInputValue(e.target.value)} placeholder="Search Repositories..." />
+            <StyledInputBase
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Search Repositories..."
+            />
           </Search>
         </StyledToolbar>
       </AppBar>

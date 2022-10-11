@@ -24,7 +24,7 @@ const RepositoryListItem = ({ type, setItems, item }: any) => {
   const { name, html_url, description, updated_at, owner } = item;
 
   const handleAddFavorite = useCallback(() => {
-    if (_LocalStorage.getFavorite().length > 3) {
+    if (_LocalStorage.getFavorite() && _LocalStorage.getFavorite().length > 3) {
       alert('4개이상 등록이 불가능 합니다.');
       return;
     }

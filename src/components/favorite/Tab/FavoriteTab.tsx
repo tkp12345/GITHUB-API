@@ -17,7 +17,7 @@ const FavoriteTab = () => {
   return (
     <>
       <h2>
-        {`Total Favorites ( ${_LocalStorage.getFavorite().length} / ${MAX})`}
+        {`Total Favorites ( ${_LocalStorage.getFavorite()?_LocalStorage.getFavorite().length:0} / ${MAX})`}
       </h2>
       <RegularList
         type={FAVORITE_TYPE}

@@ -92,7 +92,7 @@ const Repository = ({ inputValue }: string | any) => {
 
   return (
     <Container>
-      {isloading ? (
+      {inputValue && isloading ? (
         <CenterBox>
           <AntCircularProgress />
         </CenterBox>
@@ -102,7 +102,7 @@ const Repository = ({ inputValue }: string | any) => {
         <>
           <h2>
             {' '}
-            {`Searching "${searched}" Result :  ${res.total_count} available repository`}
+            {`Searching "${searched}" Result :  ${res?.total_count} available repository`}
           </h2>
           <Pagination
             data={apiData}

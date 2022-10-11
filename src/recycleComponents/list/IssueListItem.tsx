@@ -13,7 +13,7 @@ import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
  *
  * @item : 리스트 데이터
  *****************************************************************************************/
-const IssueListItem = ({item}:any) => {
+const IssueListItem = ({ item }: any) => {
   const [selected, setSelected] = useState(0);
   const {
     _repositoryName,

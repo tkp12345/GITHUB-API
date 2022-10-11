@@ -12,16 +12,17 @@
     typescript : v4
     webpack: v4
     
-    * 나버지정보 package.json 참조
+    * 나머지정보 package.json 참조
 ```
 <br/>
 
-# 3. 기획
+# 3. 기획 / 실행 
 ```
      고객은 Issue들을 모아서 보고싶어 했습니다. 이에따라 고객은 총데이터를 보고싶어하며
     각 페이지마다 데이터의 총개수가 필요하다고 느꼈습니다. 또한 검색기능이 주된기능이기 떄문에
     자동완성 검색기능을 채택했습니다
 ```
+![ezgif com-gif-maker (9)](https://user-images.githubusercontent.com/46067837/195122249-208839be-9391-478c-9edf-0778f987c4ac.gif)
 <br/>
 
 # 4. 기능구현

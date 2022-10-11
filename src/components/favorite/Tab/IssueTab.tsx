@@ -10,7 +10,7 @@ import { usePrevState } from '../../../hooks/usePrevState';
 
 const IssueTab = () => {
   const [favoriteData, setFavoriteData] = useState<any>(
-    _LocalStorage.getFavorite(),
+    _LocalStorage.getFavorite()?_LocalStorage.getFavorite():[],
   );
   const [isloading, setIsloading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -42,34 +42,31 @@ const IssueTab = () => {
   /**********************************************************************
    * Repostory 에따른 Issue 조회 API 요청을 병렬로 하기위한 함수
    *********************************************************************/
-  const callGetIssue = useCallback(
-    (page: number) => {
-      setIsloading(true);
-      let tempIssueData: any = [];
-      Promise.all(
-        favoriteData.map(async (favorite: any) => {
-          const res = await getIssueApi(
-            AUTH_FIRST + AUTH_SECOND + AUTH_THIRD,
-            page,
-            favorite?.owner.login,
-            favorite?.name,
-          );
-          const updateRes = res.map((issue: any) => ({
-            ...issue,
-            _repositoryUrl: favorite.html_url,
-            _repositoryOwner: favorite.owner.login,
-            _repositoryName: favorite.name,
-          }));
-          if(updateRes[0]) {
-            tempIssueData = [...issueData, ...updateRes];
-            setIssueData(tempIssueData);
-          }
-          setIsloading(false);
-        }),
-      );
-    },
-    [],
-  );
+  const callGetIssue = useCallback((page: number) => {
+    setIsloading(true);
+    let tempIssueData: any = [];
+    Promise.all(
+      favoriteData.map(async (favorite: any) => {
+        const res = await getIssueApi(
+          AUTH_FIRST + AUTH_SECOND + AUTH_THIRD,
+          page,
+          favorite?.owner.login,
+          favorite?.name,
+        );
+        const updateRes = res.map((issue: any) => ({
+          ...issue,
+          _repositoryUrl: favorite.html_url,
+          _repositoryOwner: favorite.owner.login,
+          _repositoryName: favorite.name,
+        }));
+        if (updateRes[0]) {
+          tempIssueData = [...issueData, ...updateRes];
+          setIssueData(tempIssueData);
+        }
+        setIsloading(false);
+      }),
+    );
+  }, []);
   useEffect(() => {
     if (!favoriteData[0]) return;
     callGetIssue(page);
@@ -85,7 +82,7 @@ const IssueTab = () => {
           page={page}
           setPage={setPage}
           totalRef={issueData.length}
-          getApi={()=>callGetIssue}
+          getApi={() => callGetIssue}
           ListComponents={IssueListItem}
         />
       )}

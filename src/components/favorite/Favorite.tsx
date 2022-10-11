@@ -72,10 +72,10 @@ const Favorite = () => {
         <Tab icon={<AdjustOutlinedIcon />} iconPosition="start" label="Issue" />
       </Tabs>
       <TabPanel value={selectedTab} index={0}>
-        <FavoriteTab/>
+        <FavoriteTab />
       </TabPanel>
       <TabPanel value={selectedTab} index={1}>
-        <IssueTab/>
+        <IssueTab />
       </TabPanel>
     </Box>
   );

@@ -15,7 +15,11 @@ const TabBar = ({ inputValue }: SetStateAction<any>) => {
   return (
     <>
       <AntTabs value={selectedTab} variant="fullWidth" onChange={handleChange}>
-        <Tab icon={<BookOutlinedIcon />} iconPosition="start" label="Repository" />
+        <Tab
+          icon={<BookOutlinedIcon />}
+          iconPosition="start"
+          label="Repository"
+        />
         <Tab icon={<StarsIcon />} iconPosition="start" label="Favorites" />
       </AntTabs>
       {selectedTab === 0 && <Repository inputValue={inputValue} />}

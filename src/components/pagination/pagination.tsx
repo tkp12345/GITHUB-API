@@ -92,9 +92,7 @@ const Pagination = (props: PaginationProps) => {
           props.inputValue,
         );
       } else {
-        props?.getApi(
-          Number(props.page + 1),
-        );
+        props?.getApi(Number(props.page + 1));
       }
       props.setPage(Number(props.page + 1));
     }
