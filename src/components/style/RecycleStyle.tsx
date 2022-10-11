@@ -6,6 +6,10 @@ export const RowDiv = styled.div`
   align-items: center;
 `;
 
+export const SpanText = styled.div`
+  padding: 0px 8px;
+`;
+
 export const CenterBox = styled.div`
   display: flex;
   justify-content: center;

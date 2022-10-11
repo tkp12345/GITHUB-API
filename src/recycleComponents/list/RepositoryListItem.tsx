@@ -11,6 +11,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import { AntButton } from '../../components/style/Button/Button';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import { LINK_BLUE } from '../../components/style/color';
 
 /******************************************************************************************
  * Repository 데이터 리스트 컴포넌트
@@ -20,14 +21,29 @@ import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
  * @setItems : 리스트 데이터 변경 함수
  *****************************************************************************************/
 const RepositoryListItem = ({ type, setItems, item }: any) => {
-  const [selected, setSelected] = useState(0);
+  const isFavoriteIncluded = _LocalStorage.getFavorite()
+    ? _LocalStorage
+        .getFavorite()
+        .map((favorite: any) => {
+          return favorite.id === item.id;
+        })
+        .includes(true)
+    : false;
+
+  const [selected, setSelected] = useState(isFavoriteIncluded);
   const { name, html_url, description, updated_at, owner } = item;
 
   const handleAddFavorite = useCallback(() => {
+    if (isFavoriteIncluded) {
+      setSelected(!selected);
+      _LocalStorage.removeFavorite(item.id);
+      return;
+    }
     if (_LocalStorage.getFavorite() && _LocalStorage.getFavorite().length > 3) {
       alert('4개이상 등록이 불가능 합니다.');
       return;
     }
+    setSelected(!selected);
     _LocalStorage.addFavorite(item);
   }, [_LocalStorage.getFavorite()]);
 
@@ -42,11 +58,7 @@ const RepositoryListItem = ({ type, setItems, item }: any) => {
     <Respo_widget>
       <Respo_widget_contents>
         <Respo_widget_title>
-          <a
-            href={html_url}
-            target="_blank"
-            style={{ color: 'rgb(160, 160, 160)' }}
-          >
+          <a href={html_url} target="_blank" style={{ color: LINK_BLUE }}>
             <BookOutlinedIcon />
             {`${owner?.login}/${name}`}
           </a>
@@ -56,7 +68,7 @@ const RepositoryListItem = ({ type, setItems, item }: any) => {
       </Respo_widget_contents>
       <Respo_widget_contents>
         {type === REPOSITORY_TYPE && (
-          <AntButton onClick={() => handleAddFavorite()}>
+          <AntButton selected={selected} onClick={() => handleAddFavorite()}>
             <StarRoundedIcon />
           </AntButton>
         )}

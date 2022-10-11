@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { IconButton } from '@mui/material';
+import { SELECT_YELLOW } from '../color';
 
-export const AntButton = styled(IconButton)({
-  color: '#000',
+export const AntButton = styled(IconButton)<{ selected?: any }>`
+  color:${(props) => props.selected && SELECT_YELLOW};
   boxShadow: 'none',
   textTransform: 'none',
   fontSize: 16,
@@ -10,15 +11,15 @@ export const AntButton = styled(IconButton)({
   backgroundColor: '#ffffff',
   borderColor: 'transparent',
   '&:hover': {
-    // backgroundColor: '#0069d9',
     borderColor: 'transparent',
     boxShadow: 'none',
+    color: SELECT_YELLOW,
   },
   '&:active': {},
   '&:focus': {
-    color: 'rgb(255,215,0)',
+    color: SELECT_YELLOW,
   },
   '&:select': {
-    color: 'rgb(255,215,0)',
-  },
-});
+    color: SELECT_YELLOW,
+  }
+`;

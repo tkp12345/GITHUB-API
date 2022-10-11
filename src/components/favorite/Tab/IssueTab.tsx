@@ -1,16 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import IssueListItem from '../../../recycleComponents/list/IssueListItem';
 import Pagination from '../../pagination/pagination';
 import { AUTH_FIRST, AUTH_SECOND, AUTH_THIRD } from '../../../constants/auth';
 import _LocalStorage from '../../../utills/LocalStorage';
 import { errorHandler } from '../../../utills/error';
-import { CenterBox } from '../../style/RecycleStyle';
 import { AntCircularProgress } from '../../../recycleComponents/progress/AntCircularProgress';
-import { usePrevState } from '../../../hooks/usePrevState';
 
 const IssueTab = () => {
   const [favoriteData, setFavoriteData] = useState<any>(
-    _LocalStorage.getFavorite()?_LocalStorage.getFavorite():[],
+    _LocalStorage.getFavorite() ? _LocalStorage.getFavorite() : [],
   );
   const [isloading, setIsloading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
