@@ -67,11 +67,12 @@ Repository 마다 등록된 issue 정보를 효율적으로 요청하기위해 P
 <br/>
 
 #### 1. deboounce
-    API 요청을 최소화하기위해 useDebounce 훅을 만들어 input onChange 이벤트를 관리하도록했습니다.
+   API 요청을 최소화하기위해 useDebounce 훅을 만들어 input onChange 이벤트를 관리하도록했습니다.
 
 #### 2. 페이지네이션 데이터 미리 API 요청하기
-![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/46067837/195115203-a2c67247-3bf1-42da-a621-2b316dee206f.gif)
-    git Repository API 는 성능이 좋지 못하였습니다 많은 페이지를 가져오면 속도가 느리기때문에 첫 화면에
+![ezgif com-gif-maker (14)](https://user-images.githubusercontent.com/46067837/195216023-fda8749c-b6ed-4b2c-9608-f6445957a074.gif)
+
+   git Repository API 는 성능이 좋지 못하였습니다 많은 페이지를 가져오면 속도가 느리기때문에 첫 화면에
 보여줄 데이터만 API 요청을하고, 사용자가 페이지 변경시 미리 다음번 데이터가 없는지 확인하고 미리 API요청을 하도록
 구현했습니다 
 ```
